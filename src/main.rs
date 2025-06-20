@@ -13,7 +13,7 @@ struct Cli {
 #[derive(Subcommand)]
 enum Commands {
     /// NIP01: Basic protocol flow (events, keys, relay communication)
-    Nip01,
+    Nip01Post,
     
     /// NIP02: Contact List and Petnames
     Nip02,
@@ -39,7 +39,7 @@ async fn main() {
     let cli = Cli::parse();
     
     let result = match cli.command {
-        Commands::Nip01 => run_nip01().await,
+        Commands::Nip01Post => run_nip01_post().await,
         Commands::Nip02 => todo!(),
         Commands::Nip03 => todo!(),
         Commands::Nip04 => todo!(),
@@ -58,9 +58,9 @@ async fn main() {
 }
 
 // NIP runner functions
-async fn run_nip01() -> Result<(), Box<dyn std::error::Error>> {
-    println!("Running NIP01 example...\n");
-    rust_nostr_examples::examples::nip01::run().await
+async fn run_nip01_post() -> Result<(), Box<dyn std::error::Error>> {
+    println!("Running NIP01 Publish example...\n");
+    rust_nostr_examples::examples::nip01_post::run().await
 }
 /*
 async fn run_nip02() -> Result<(), Box<dyn std::error::Error>> {
@@ -92,12 +92,12 @@ async fn run_nip06() -> Result<(), Box<dyn std::error::Error>> {
 fn list_nips() {
     println!("Available Nostr Improvement Proposals (NIPs):");
     
-    println!("  nip01   - Basic protocol flow");
-    println!("  nip02   - Contact List and Petnames");
-    println!("  nip03   - OpenTimestamps Attestations");
-    println!("  nip04   - Encrypted Direct Messages");
-    println!("  nip05   - DNS-based identity mapping");
-    println!("  nip06   - Basic key derivation from mnemonic");
+    println!("  nip01-post  - Create and send basic note");
+    println!("  nip02       - Contact List and Petnames");
+    println!("  nip03       - OpenTimestamps Attestations");
+    println!("  nip04       - Encrypted Direct Messages");
+    println!("  nip05       - DNS-based identity mapping");
+    println!("  nip06       - Basic key derivation from mnemonic");
     
     println!("\nUsage:");
     println!("  cargo run -- <nip>     # Run specific NIP example");

@@ -1,5 +1,5 @@
 pub mod examples {
-    pub mod nip01;
+    pub mod nip01_post;
     /*
     pub mod nip02;
     pub mod nip03;
