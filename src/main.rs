@@ -34,12 +34,11 @@ enum Commands {
     List,
 }
 
-#[tokio::main]
-async fn main() {
+fn main() {
     let cli = Cli::parse();
     
     let result = match cli.command {
-        Commands::Nip01Post => run_nip01_post().await,
+        Commands::Nip01Post => run_nip01_post(),
         Commands::Nip02 => todo!(),
         Commands::Nip03 => todo!(),
         Commands::Nip04 => todo!(),
@@ -58,9 +57,9 @@ async fn main() {
 }
 
 // NIP runner functions
-async fn run_nip01_post() -> Result<(), Box<dyn std::error::Error>> {
+fn run_nip01_post() -> Result<(), Box<dyn std::error::Error>> {
     println!("Running NIP01 Publish example...\n");
-    rust_nostr_examples::examples::nip01_post::run().await
+    rust_nostr_examples::examples::nip01_post::run()
 }
 /*
 async fn run_nip02() -> Result<(), Box<dyn std::error::Error>> {
